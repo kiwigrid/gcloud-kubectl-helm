@@ -4,10 +4,8 @@ Docker image for the trinity of [gcloud](https://cloud.google.com/sdk/docs/), [k
 [![Docker Pulls](https://img.shields.io/docker/pulls/kiwigrid/gcloud-kubectl-helm.svg?style=plastic)](https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm/)
 [![Docker Automated build](https://img.shields.io/docker/automated/kiwigrid/gcloud-kubectl-helm.svg?style=plastic)](https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm/builds/)
 
-- `latest` always corresponds with the latest build from master
-- Docker `tag` always correspond with git `tag`
-
-As version, the underlaying HELM version is used.
+- `latest` latest build from master
+- `tag` releated git-tag (acutally the version of the packed HELM client)
 
 # Usage
 
