@@ -10,6 +10,16 @@ RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > 
 RUN chmod 700 get_helm.sh
 RUN ./get_helm.sh --version $HELM_VERSION
 
+# Data
+VOLUME /data
+RUN mkdir -p /data
+RUN chown gkh /data
+
+COPY commands.sh /data/commands.sh
+RUN chmod +x /data/commands.sh
+
 USER gkh
 
 RUN helm init --client-only
+
+CMD ["/bin/sh", "/data/commands.sh"]
