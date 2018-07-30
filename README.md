@@ -1,7 +1,7 @@
 # gcloud-kubectl-helm
 Docker image for the trinity of [gcloud](https://cloud.google.com/sdk/docs/), [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) and [helm](https://www.helm.sh).
 
-# Usage
+# Usage with CGP Service Account and key file 
 
 Executing single command
 ```
@@ -18,6 +18,21 @@ Passing script and GCP key-file
 docker run -v /path/to/your/script.sh:/data/commands.sh:ro -volume /path/to/your/key-file.json:/data/gcp-key-file.json:ro kiwigrid/gcloud-kubectl-helm
 ```
 
+# Interactive usage with your personal GCP Account 
+
+```
+docker run -ti -v /path/to/your/workspace:/data/ kiwigrid/gcloud-kubectl-helm bash
+# authenticate and paste token
+$ gcloud auth login
+
+# setup kubectl context
+$ gcloud container clusters get-credentials
+
+# run helm
+$ helm install release /data/your/chart -f values.yaml
+# or with sops encrypted secrets file 
+$ helm secrets install release /data/your/chart -f values.yaml -f secrets.myapp.yaml 
+```
 
 # Credits
 This repo is inspired by
