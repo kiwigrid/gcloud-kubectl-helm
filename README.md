@@ -4,19 +4,19 @@ Docker image for the trinity of [gcloud](https://cloud.google.com/sdk/docs/), [k
 # Usage
 
 Executing single command
-´´´
+```
 docker run kiwigrid/gcloud-kubectl-helm helm version -c
-´´´
+```
 
 Passing script with multiple commands
-´´´
+```
 docker run -v /path/to/your/script.sh:/data/commands.sh:ro kiwigrid/gcloud-kubectl-helm
-´´´
+```
 
 Passing script and GCP key-file
-´´´
+```
 docker run -v /path/to/your/script.sh:/data/commands.sh:ro -volume /path/to/your/key-file.json:/data/gcp-key-file.json:ro kiwigrid/gcloud-kubectl-helm
-´´´
+```
 
 
 # Credits
