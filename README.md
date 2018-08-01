@@ -24,6 +24,16 @@ Passing script and GCP key-file
 docker run -v /path/to/your/script.sh:/data/commands.sh:ro -volume /path/to/your/key-file.json:/data/gcp-key-file.json:ro kiwigrid/gcloud-kubectl-helm
 ```
 
+## Command file examples
+
+Authorize access to GCP with a service account and fetch credentials for running cluster
+```
+gcloud auth activate-service-account --key-file=/data/gcp-key-file.json
+gcloud container clusters get-credentials <clusterName> --project <projectId> [--region=<region> | --zone=<zone>]
+
+helm list
+kubectl get pods --all-namespaces
+```
 
 # Credits
 This repo is inspired by
