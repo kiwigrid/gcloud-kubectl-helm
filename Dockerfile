@@ -1,6 +1,6 @@
 FROM google/cloud-sdk:206.0.0-alpine
 
-ENV HELM_VERSION v2.9.1
+ENV HELM_VERSION v2.10.0
 ENV SOPS_VERSION 3.0.5
 
 RUN adduser -S gkh gkh
@@ -24,8 +24,9 @@ COPY sops_decrypt.sh /data/sops_decrypt.sh
 USER gkh
 
 RUN helm init --client-only
-# see https://github.com/futuresimple/helm-secrets/issues/52
-RUN git clone  https://github.com/mhyllander/helm-secrets.git -b fixes ~/helm-secrets-plugin
+RUN git clone  https://github.com/futuresimple/helm-secrets.git ~/helm-secrets-plugin
+# see https://github.com/futuresimple/helm-secrets/issues/52 and https://github.com/futuresimple/helm-secrets/pull/60
+RUN cd ~/helm-secrets-plugin && git fetch origin pull/60/head:pr-60 &&  git checkout pr-60 && cd ..
 RUN helm plugin install ~/helm-secrets-plugin/
 
 CMD ["/bin/sh", "/data/commands.sh"]
