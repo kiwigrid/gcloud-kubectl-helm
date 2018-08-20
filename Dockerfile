@@ -19,12 +19,12 @@ RUN chown gkh /data
 VOLUME /data
 
 COPY commands.sh /data/commands.sh
-RUN chmod +x /data/commands.sh
+COPY sops_decrypt.sh /data/sops_decrypt.sh
 
 USER gkh
 
 RUN helm init --client-only
-
+# see https://github.com/futuresimple/helm-secrets/issues/52
 RUN git clone  https://github.com/mhyllander/helm-secrets.git -b fixes ~/helm-secrets-plugin
 RUN helm plugin install ~/helm-secrets-plugin/
 

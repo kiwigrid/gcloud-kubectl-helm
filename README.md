@@ -31,7 +31,7 @@ docker run -v /path/to/your/script.sh:/data/commands.sh:ro -volume /path/to/your
 ```
 docker run -ti -v /path/to/your/workspace:/data/ kiwigrid/gcloud-kubectl-helm bash
 # authenticate and paste token
-$ gcloud auth login
+$ gcloud auth application-default login
 
 # setup kubectl context
 $ gcloud container clusters get-credentials
