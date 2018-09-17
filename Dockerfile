@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:215.0.0-alpine
+FROM google/cloud-sdk:216.0.0-alpine
 
 ENV HELM_VERSION v2.10.0
 ENV SOPS_VERSION 3.0.5
@@ -7,6 +7,7 @@ RUN adduser -S gkh gkh
 
 RUN apk update && apk add ca-certificates openssl && rm -rf /var/cache/apk/*
 RUN gcloud components install kubectl -q --no-user-output-enabled
+RUN gcloud -q components install beta
 RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
 RUN chmod 700 get_helm.sh
 RUN ./get_helm.sh --version $HELM_VERSION
