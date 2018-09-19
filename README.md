@@ -11,11 +11,6 @@ Docker image for the trinity of [gcloud](https://cloud.google.com/sdk/docs/), [k
 
 ## With CGP Service Account and key file
 
-Executing single command
-```
-docker run kiwigrid/gcloud-kubectl-helm helm version -c
-```
-
 Passing script with multiple commands
 ```
 docker run -v /path/to/your/script.sh:/data/commands.sh:ro kiwigrid/gcloud-kubectl-helm
