@@ -16,11 +16,12 @@ RUN curl -L --output /usr/local/bin/sops https://github.com/mozilla/sops/release
 
 # Data
 RUN mkdir -p /data
+RUN chown gkh /data
 VOLUME /data
 
 COPY commands.sh sops_decrypt.sh /data/
 COPY entrypoint.sh entrypoint.sh
-RUN chown gkh /data/* /entrypoint.sh
+RUN chown gkh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 USER gkh
