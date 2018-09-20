@@ -37,6 +37,32 @@ $ helm install release /data/your/chart -f values.yaml
 $ helm secrets install release /data/your/chart -f values.yaml -f secrets.myapp.yaml
 ```
 
+## CI/CD context
+Using this image from a CI/CD pipeline is very handy. 
+It's recommended to start the container at the beginning of your pipeline. 
+Afterwards one can pass single commands to running container.
+
+```bash
+CONTAINER_NAME=gkh-container
+# Start container
+docker run \
+  --volume /path/to/your/workdir:/workspace:ro \
+  --workdir /workspace
+  --volume /path/to/your/gcp-key-file.json:/data/gcp-key-file.json:ro \
+  --env GOOGLE_APPLICATION_CREDENTIALS=/data/gcp-key-file.json
+  --rm \
+  -t \
+  --name $CONTAINER_NAME \
+  kiwigrid/gcloud-kubectl-helm:latest /bin/bash
+  
+# Execute arbitrary commands
+docker exec $CONTAINER_NAME helm list
+docker exec $CONTAINER_NAME gcloud deployment-manager deployments describe my-deployment
+
+# Kill
+docker kill $CONTAINER_NAME
+```
+
 ## Command file examples
 
 Authorize access to GCP with a service account and fetch credentials for running cluster
