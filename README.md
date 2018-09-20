@@ -56,6 +56,10 @@ docker run \
   kiwigrid/gcloud-kubectl-helm:latest /bin/bash
   
 # Execute arbitrary commands
+docker exec $CONTAINER_NAME gcloud auth activate-service-account --key-file=/data/gcp-key-file.json
+docker exec $CONTAINER_NAME gcloud config set project my-gcp-project-id
+docker exec $CONTAINER_NAME gcloud container clusters get-credentials my-gke-cluster --project my-gcp-project-id --zone my-gke-zone
+
 docker exec $CONTAINER_NAME helm list
 docker exec $CONTAINER_NAME gcloud deployment-manager deployments describe my-deployment
 
