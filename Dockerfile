@@ -1,7 +1,7 @@
-FROM google/cloud-sdk:217.0.0-alpine
+FROM google/cloud-sdk:218.0.0-alpine
 
-ENV HELM_VERSION v2.10.0
-ENV SOPS_VERSION 3.0.5
+ENV HELM_VERSION v2.11.0
+ENV SOPS_VERSION 3.1.1
 
 RUN adduser -S gkh gkh
 
