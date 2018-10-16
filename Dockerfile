@@ -24,7 +24,7 @@ RUN chmod +x /entrypoint.sh
 USER gkh
 
 RUN helm init --client-only \
-  && git clone  https://github.com/futuresimple/helm-secrets.git ~/helm-secrets-plugin \
+  && git clone https://github.com/futuresimple/helm-secrets.git ~/helm-secrets-plugin \
   # see https://github.com/futuresimple/helm-secrets/issues/52 and https://github.com/futuresimple/helm-secrets/pull/60
   && cd ~/helm-secrets-plugin \
   && git fetch origin pull/60/head:pr-60 \
