@@ -28,7 +28,7 @@ RUN helm init --client-only \
   # see https://github.com/futuresimple/helm-secrets/issues/52 and https://github.com/futuresimple/helm-secrets/pull/60
   && cd ~/helm-secrets-plugin \
   && git fetch origin pull/60/head:pr-60 \
-  &&  git checkout pr-60 && cd .. \
+  && git checkout pr-60 && cd .. \
   && helm plugin install ~/helm-secrets-plugin/
 
 ENTRYPOINT ["/entrypoint.sh"]
