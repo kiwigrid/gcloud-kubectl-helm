@@ -10,7 +10,7 @@ RUN adduser -S gkh gkh \
  && curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh \
  && chmod 700 get_helm.sh \
  && ./get_helm.sh --version $HELM_VERSION \
- && curl -L --output /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && chmod 755  /usr/local/bin/sops \
+ && curl -L --output /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && chmod 755 /usr/local/bin/sops \
  # Data
  && mkdir -p /data \
  && chown gkh /data
@@ -26,7 +26,9 @@ USER gkh
 RUN helm init --client-only \
   && git clone  https://github.com/futuresimple/helm-secrets.git ~/helm-secrets-plugin \
   # see https://github.com/futuresimple/helm-secrets/issues/52 and https://github.com/futuresimple/helm-secrets/pull/60
-  && cd ~/helm-secrets-plugin && git fetch origin pull/60/head:pr-60 &&  git checkout pr-60 && cd .. \
+  && cd ~/helm-secrets-plugin \
+  && git fetch origin pull/60/head:pr-60 \
+  &&  git checkout pr-60 && cd .. \
   && helm plugin install ~/helm-secrets-plugin/
 
 ENTRYPOINT ["/entrypoint.sh"]
