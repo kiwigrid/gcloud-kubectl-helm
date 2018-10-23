@@ -4,7 +4,8 @@ ENV HELM_VERSION v2.11.0
 ENV SOPS_VERSION 3.1.1
 
 RUN adduser -S gkh gkh && \ 
-    apk update && apk add ca-certificates gnupg openssl && rm -rf /var/cache/apk/* && \
+    apk update && apk add ca-certificates gnupg openssl && \
+    rm -rf /var/cache/apk/* && \
     gcloud components install kubectl -q --no-user-output-enabled && \
     gcloud -q components install beta && \
     curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh && \
