@@ -1,9 +1,9 @@
-FROM google/cloud-sdk:219.0.1-alpine
+FROM google/cloud-sdk:224.0.0-alpine
 
 ENV HELM_VERSION v2.11.0
-ENV SOPS_VERSION 3.1.1
+ENV SOPS_VERSION 3.2.0
 
-RUN adduser -S gkh gkh && \ 
+RUN adduser -S gkh gkh && \
     apk update && apk add ca-certificates gnupg openssl && \
     rm -rf /var/cache/apk/* && \
     gcloud components install kubectl -q --no-user-output-enabled && \
@@ -14,11 +14,10 @@ RUN adduser -S gkh gkh && \
     curl -L --output /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && \
     chmod 755 /usr/local/bin/sops && \
     mkdir -p /data && \
-    chown gkh /data 
+    chown gkh /data
 
 VOLUME /data
 
-COPY commands.sh sops_decrypt.sh /data/
 COPY entrypoint.sh entrypoint.sh
 
 RUN chown gkh /entrypoint.sh && \
