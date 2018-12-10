@@ -78,6 +78,23 @@ helm list
 kubectl get pods --all-namespaces
 ```
 
+## Import GPG Keys 
+
+To import public GPG keys from keyserver, add them space separated to GPG_PUB_KEYS env variable. 
+
+```bash
+docker run -e GPG_PUB_KEYS=<key id>   kiwigrid/gcloud-kubectl-helm:latest 
+```
+
+## Add distributed Helm Chart Repositories 
+
+To include adding of distributed helm chart repos, add REPO_YAML_URL as env variable. 
+E.g.
+
+```bash
+docker run -e REPO_YAML_URL=https://raw.githubusercontent.com/helm/hub/master/config/repo-values.yaml kiwigrid/gcloud-kubectl-helm:latest 
+```
+
 # Credits
 This repo is inspired by
 * https://github.com/eversC/gcloud-k8s-helm
