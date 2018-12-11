@@ -17,6 +17,12 @@ echo " ---------------------"
 helm version --client
 echo ""
 
+echo " ----------------"
+echo "| HELM REPO LIST |"
+echo " ----------------"
+helm repo list
+echo ""
+
 echo " ====================== "
 echo " "
 echo "To run a custom script, just mount it '--volume /your/script.sh:/data/commands.sh:ro'"
