@@ -1,6 +1,6 @@
-FROM google/cloud-sdk:224.0.0-alpine
+FROM google/cloud-sdk:227.0.0-alpine
 
-ENV HELM_VERSION v2.11.0
+ENV HELM_VERSION v2.12.0
 ENV SOPS_VERSION 3.2.0
 ENV YQ_BIN_VERSION 2.2.0
 
@@ -29,6 +29,6 @@ RUN chown gkh /entrypoint.sh && \
 USER gkh
 
 RUN helm init --client-only && \
-    helm plugin install https://github.com/futuresimple/helm-secrets.git 
+    helm plugin install https://github.com/futuresimple/helm-secrets.git
 
 ENTRYPOINT ["/entrypoint.sh"]
