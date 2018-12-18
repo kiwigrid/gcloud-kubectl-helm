@@ -22,9 +22,12 @@ RUN adduser -S gkh gkh && \
 VOLUME /data
 
 COPY entrypoint.sh entrypoint.sh
+COPY commands.sh /data/commands.sh
 
-RUN chown gkh /entrypoint.sh && \
-    chmod +x /entrypoint.sh
+RUN chown gkh /entrypoint.sh \
+ && chmod +x /entrypoint.sh \
+ && chown gkh /data/commands.sh \
+ && chmod +x /data/commands.sh
 
 USER gkh
 
