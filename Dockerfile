@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:227.0.0-alpine
+FROM google/cloud-sdk:228.0.0-alpine
 
 ENV HELM_VERSION v2.12.0
 ENV SOPS_VERSION 3.2.0
@@ -22,9 +22,12 @@ RUN adduser -S gkh gkh && \
 VOLUME /data
 
 COPY entrypoint.sh entrypoint.sh
+COPY commands.sh /data/commands.sh
 
-RUN chown gkh /entrypoint.sh && \
-    chmod +x /entrypoint.sh
+RUN chown gkh /entrypoint.sh \
+ && chmod +x /entrypoint.sh \
+ && chown gkh /data/commands.sh \
+ && chmod +x /data/commands.sh
 
 USER gkh
 
