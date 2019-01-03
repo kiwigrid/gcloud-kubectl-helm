@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# install charts in kubernetes kind
+# build docker image
 #
 
 set -o errexit

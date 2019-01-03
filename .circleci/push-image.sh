@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# deploy to dockerhub
+# push docker image to dockerhub
 #
 
 set -o errexit
@@ -11,5 +11,3 @@ DOCKER_TAG="$(grep -E '(ENV HELM_VERSION|FROM google/cloud-sdk)' Dockerfile | se
 echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 docker push "${DOCKER_REGISTRY}/${GITHUB_USERNAME}/${DOCKER_REPOSITORY}:${DOCKER_TAG}"
 docker push "${DOCKER_REGISTRY}/${GITHUB_USERNAME}/${DOCKER_REPOSITORY}:latest"
-
-bla=1
