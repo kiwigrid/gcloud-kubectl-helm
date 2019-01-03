@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# push docker image to dockerhub
+# push docker image to dockerhub kiwigrid/gcloud-kubectl-helm
 #
 
 set -o errexit
