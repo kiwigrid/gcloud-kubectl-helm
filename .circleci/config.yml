@@ -28,9 +28,9 @@ workflows:
   lint_install_deploy:
     jobs:
       - lint-scripts
-      - build-imag:
+      - build-image:
           requires:
             - lint-scripts
       - push-image:
           requires:
-            - build
+            - build-image
