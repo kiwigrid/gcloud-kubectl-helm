@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  lint-scripts:
+    docker:
+      - image: koalaman/shellcheck-alpine
+    steps:
+      - checkout
+      - run:
+          name: lint-scripts
+          command: .circleci/lint-scripts.sh
+  build-image:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: build
+          command: .circleci/build-image.sh
+          no_output_timeout: 3600
+  push-image:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: deploy
+          command: .circleci/push-image.sh
+workflows:
+  version: 2
+  lint_install_deploy:
+    jobs:
+      - lint-scripts
+      - build-imag:
+          requires:
+            - lint-scripts
+      - push-image:
+          requires:
+            - build
