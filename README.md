@@ -8,6 +8,10 @@ Docker image for the quaternity of [gcloud](https://cloud.google.com/sdk/docs/),
 
 CircleCI status for Docker builds: [![CircleCI](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm.svg?style=svg)](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm)
 
+# Adding changes to this repo
+* Use a fork of this repo
+* Add a PR
+
 # Usage
 
 ## With CGP Service Account and key file
@@ -100,3 +104,6 @@ docker run -e REPO_YAML_URL=https://raw.githubusercontent.com/helm/hub/master/co
 This repo is inspired by
 * https://github.com/eversC/gcloud-k8s-helm
 * https://github.com/lfaoro/gcloud-kubectl-helm
+
+
+
