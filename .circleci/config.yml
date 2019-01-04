@@ -18,7 +18,7 @@ jobs:
           no_output_timeout: 3600
 workflows:
   version: 2
-  lint_install_deploy:
+  lint-and-build:
     jobs:
       - lint-scripts
       - build-image:
