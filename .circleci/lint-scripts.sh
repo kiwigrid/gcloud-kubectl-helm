@@ -6,8 +6,6 @@
 set -o errexit
 
 CONFIG_DIR="./.circleci"
-
-
 TMP_FILE="$(mktemp)"
 
 find "${CONFIG_DIR}" -type f -name "*.sh" > "${TMP_FILE}"
