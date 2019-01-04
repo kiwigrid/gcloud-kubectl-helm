@@ -1,8 +1,13 @@
 FROM google/cloud-sdk:228.0.0-alpine
 
-ENV HELM_VERSION v2.12.0
+ENV HELM_VERSION v2.12.1
 ENV SOPS_VERSION 3.2.0
 ENV YQ_BIN_VERSION 2.2.0
+
+VOLUME /data
+
+COPY entrypoint.sh entrypoint.sh
+COPY commands.sh /data/commands.sh
 
 RUN adduser -S gkh gkh && \
     apk update && apk add ca-certificates gnupg openssl && \
@@ -17,17 +22,11 @@ RUN adduser -S gkh gkh && \
     curl --location --output /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_BIN_VERSION}/yq_linux_amd64 && \
     chmod 755 /usr/local/bin/yq && \
     mkdir -p /data && \
-    chown gkh /data
-
-VOLUME /data
-
-COPY entrypoint.sh entrypoint.sh
-COPY commands.sh /data/commands.sh
-
-RUN chown gkh /entrypoint.sh \
- && chmod +x /entrypoint.sh \
- && chown gkh /data/commands.sh \
- && chmod +x /data/commands.sh
+    chown gkh /data && \
+    chown gkh /entrypoint.sh && \
+    chmod +x /entrypoint.sh && \
+    chown gkh /data/commands.sh && \
+    chmod +x /data/commands.sh
 
 USER gkh
 

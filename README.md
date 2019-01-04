@@ -7,6 +7,8 @@ Docker image for the quaternity of [gcloud](https://cloud.google.com/sdk/docs/),
 - `latest` latest build from master
 - `tag` releated git-tag (acutally the version of packed HELM client and gcloud, e.g. 2.10.0-217.0.0)
 
+CircleCI status: [![CircleCI](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm.svg?style=svg)](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm)
+
 # Usage
 
 ## With CGP Service Account and key file
@@ -38,8 +40,8 @@ $ helm secrets install release /data/your/chart -f values.yaml -f secrets.myapp.
 ```
 
 ## CI/CD context
-Using this image from a CI/CD pipeline is very handy. 
-It's recommended to start the container at the beginning of your pipeline. 
+Using this image from a CI/CD pipeline is very handy.
+It's recommended to start the container at the beginning of your pipeline.
 Afterwards one can pass single commands to running container.
 
 ```bash
@@ -54,7 +56,7 @@ docker run \
   -t \
   --name $CONTAINER_NAME \
   kiwigrid/gcloud-kubectl-helm:latest /bin/bash
-  
+
 # Execute arbitrary commands
 docker exec $CONTAINER_NAME gcloud auth activate-service-account --key-file=/data/gcp-key-file.json
 docker exec $CONTAINER_NAME gcloud config set project my-gcp-project-id
@@ -78,21 +80,21 @@ helm list
 kubectl get pods --all-namespaces
 ```
 
-## Import GPG Keys 
+## Import GPG Keys
 
-To import public GPG keys from keyserver, add them space separated to GPG_PUB_KEYS env variable. 
+To import public GPG keys from keyserver, add them space separated to GPG_PUB_KEYS env variable.
 
 ```bash
-docker run -e GPG_PUB_KEYS=<key id>   kiwigrid/gcloud-kubectl-helm:latest 
+docker run -e GPG_PUB_KEYS=<key id>   kiwigrid/gcloud-kubectl-helm:latest
 ```
 
-## Add distributed Helm Chart Repositories 
+## Add distributed Helm Chart Repositories
 
-To include adding of distributed helm chart repos, add REPO_YAML_URL as env variable. 
+To include adding of distributed helm chart repos, add REPO_YAML_URL as env variable.
 E.g.
 
 ```bash
-docker run -e REPO_YAML_URL=https://raw.githubusercontent.com/helm/hub/master/config/repo-values.yaml kiwigrid/gcloud-kubectl-helm:latest 
+docker run -e REPO_YAML_URL=https://raw.githubusercontent.com/helm/hub/master/config/repo-values.yaml kiwigrid/gcloud-kubectl-helm:latest
 ```
 
 # Credits
