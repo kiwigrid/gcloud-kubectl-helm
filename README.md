@@ -4,7 +4,7 @@ Docker image for the quaternity of [gcloud](https://cloud.google.com/sdk/docs/),
 [![Docker Pulls](https://img.shields.io/docker/pulls/kiwigrid/gcloud-kubectl-helm.svg?style=plastic)](https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm/)
 
 - `latest` latest build from master
-- `tag` releated git-tag (acutally the version of packed HELM client and gcloud, e.g. 2.10.0-217.0.0)
+- `tag` releated git-tag (acutally the version of packed HELM client, gcloud and build-number, e.g. 2.12.1-228.0.0-68)
 
 CircleCI status for Docker builds: [![CircleCI](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm.svg?style=svg)](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm)
 
