@@ -5,7 +5,7 @@ Docker image for the quaternity of [gcloud](https://cloud.google.com/sdk/docs/),
 [![CircleCI](https://img.shields.io/circleci/project/github/kiwigrid/gcloud-kubectl-helm/master.svg?style=plastic)](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm)
 
 - `latest` latest build from master
-- `tag` releated git-tag (acutally the version of packed HELM client, gcloud and build-number, e.g. 2.12.1-228.0.0-68)
+- `tag` Images will be taged by combination of packed HELM client version, gcloud and build-number, e.g. 2.12.1-228.0.0-68. There will be no git tag anymore. View all available image tags on [DockerHub](https://cloud.docker.com/u/kiwigrid/repository/docker/kiwigrid/gcloud-kubectl-helm/tags)
 
 # Adding changes to this repo
 * Use a fork of this repo
