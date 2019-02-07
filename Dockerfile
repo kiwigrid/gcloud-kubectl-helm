@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:233.0.0-alpine
+FROM google/cloud-sdk:232.0.0-alpine
 
 ENV HELM_VERSION v2.12.3
 ENV SOPS_VERSION 3.2.0
