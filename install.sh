@@ -6,7 +6,7 @@ set -x
 adduser -S gkh gkh
 
 apk update
-apk add ca-certificates gnupg openssl
+apk add ca-certificates gnupg mysql-client openssl
 rm -rf /var/cache/apk/*
 
 gcloud components install kubectl -q --no-user-output-enabled
