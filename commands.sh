@@ -5,22 +5,28 @@ echo "| GCLOUD INFO |"
 echo " -------------"
 gcloud info
 
-echo " ------------------------"
+echo " ------------------------ "
 echo "| KUBECTL CLIENT VERSION |"
-echo " ------------------------"
+echo " ------------------------ "
 kubectl version --client
 echo ""
 
-echo " ---------------------"
+echo " --------------------- "
 echo "| HELM CLIENT VERSION |"
-echo " ---------------------"
+echo " --------------------- "
 helm version --client
 echo ""
 
-echo " ----------------"
+echo " ---------------- "
 echo "| HELM REPO LIST |"
-echo " ----------------"
+echo " ---------------- "
 helm repo list
+echo ""
+
+echo " ------------------------- "
+echo "| CLOUD_SQL_PROXY VERSION |"
+echo " ------------------------- "
+cloud_sql_proxy -version
 echo ""
 
 echo " ====================== "

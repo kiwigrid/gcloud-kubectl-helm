@@ -6,11 +6,10 @@ set -x
 adduser -S gkh gkh
 
 apk update
-apk add ca-certificates gnupg openssl
+apk add ca-certificates gnupg mysql-client openssl
 rm -rf /var/cache/apk/*
 
-gcloud components install kubectl -q --no-user-output-enabled
-gcloud -q components install beta
+gcloud components install -q beta cloud_sql_proxy kubectl
 
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
 chmod 700 get_helm.sh
