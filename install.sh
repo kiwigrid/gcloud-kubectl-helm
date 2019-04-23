@@ -22,6 +22,9 @@ chmod 755 /usr/local/bin/sops
 curl --location --output /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/"${YQ_BIN_VERSION}"/yq_linux_amd64
 chmod 755 /usr/local/bin/yq
 
+curl --location --output /usr/local/bin/cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
+chmod 755 /usr/local/bin/cloud_sql_proxy
+
 mkdir -p /data
 chown gkh /data
 chown gkh /entrypoint.sh
