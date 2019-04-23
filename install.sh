@@ -9,8 +9,7 @@ apk update
 apk add ca-certificates gnupg mysql-client openssl
 rm -rf /var/cache/apk/*
 
-gcloud components install cloud_sql_proxy kubectl -q
-gcloud -q components install beta
+gcloud -q components install beta cloud_sql_proxy kubectl
 
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
 chmod 700 get_helm.sh
