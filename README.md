@@ -1,6 +1,8 @@
 # gcloud-kubectl-helm
 Docker image for the quaternity of [gcloud](https://cloud.google.com/sdk/docs/), [helm](https://www.helm.sh), [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) and [SOPS](https://github.com/mozilla/sops).
 
+The image also contains cloud_sql_proxy and mysql-client.
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/kiwigrid/gcloud-kubectl-helm.svg?style=plastic)](https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm/)
 [![CircleCI](https://img.shields.io/circleci/project/github/kiwigrid/gcloud-kubectl-helm/master.svg?style=plastic)](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm)
 
