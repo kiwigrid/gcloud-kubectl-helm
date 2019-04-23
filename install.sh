@@ -11,7 +11,6 @@ rm -rf /var/cache/apk/*
 
 gcloud components install kubectl -q --no-user-output-enabled
 gcloud -q components install beta
-gcloud -q components update
 
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
 chmod 700 get_helm.sh
