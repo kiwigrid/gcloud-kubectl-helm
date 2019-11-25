@@ -1,6 +1,6 @@
 FROM google/cloud-sdk:272.0.0-alpine
 
-ENV HELM_VERSION v2.16.1
+ENV HELM_VERSION v3.0.0
 ENV SOPS_VERSION 3.5.0
 ENV YQ_BIN_VERSION 2.4.1
 
@@ -15,8 +15,7 @@ VOLUME /data
 
 USER gkh
 
-RUN helm init --client-only && \
-    helm plugin install https://github.com/futuresimple/helm-secrets.git || \
+RUN helm plugin install https://github.com/futuresimple/helm-secrets.git || \
     ## To avoid RC 1 for 'Error: plugin already exists'
     true
 
