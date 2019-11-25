@@ -15,8 +15,6 @@ VOLUME /data
 
 USER gkh
 
-RUN helm plugin install https://github.com/futuresimple/helm-secrets.git || \
-    ## To avoid RC 1 for 'Error: plugin already exists'
-    true
+RUN [ ! "$(helm plugin list | grep secrets)" ] && helm plugin install https://github.com/futuresimple/helm-secrets.git
 
 ENTRYPOINT ["/entrypoint.sh"]
