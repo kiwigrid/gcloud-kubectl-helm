@@ -11,6 +11,24 @@ echo " ------------------------ "
 kubectl version --client
 echo ""
 
+echo " ------------------------ "
+echo "| SOPS VERSION |"
+echo " ------------------------ "
+sops -v
+echo ""
+
+echo " ------------------------- "
+echo "| CLOUD_SQL_PROXY VERSION |"
+echo " ------------------------- "
+cloud_sql_proxy -version
+echo ""
+
+echo " ------------------------- "
+echo "| YQ VERSION |"
+echo " ------------------------- "
+yq -V
+echo ""
+
 echo " --------------------- "
 echo "| HELM CLIENT VERSION |"
 echo " --------------------- "
@@ -21,12 +39,6 @@ echo " ---------------- "
 echo "| HELM REPO LIST |"
 echo " ---------------- "
 helm repo list
-echo ""
-
-echo " ------------------------- "
-echo "| CLOUD_SQL_PROXY VERSION |"
-echo " ------------------------- "
-cloud_sql_proxy -version
 echo ""
 
 echo " ====================== "
