@@ -1,4 +1,7 @@
 # gcloud-kubectl-helm
+
+Helm 2.x branch
+
 Docker image for the quaternity of [gcloud](https://cloud.google.com/sdk/docs/), [helm](https://www.helm.sh), [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) and [SOPS](https://github.com/mozilla/sops).
 
 The image also contains [cloud_sql_proxy](https://github.com/GoogleCloudPlatform/cloudsql-proxy), [gnupg](https://pkgs.alpinelinux.org/package/edge/main/x86_64/gnupg), [mysql-client](https://pkgs.alpinelinux.org/package/edge/main/x86_64/mysql-client) and [yq](https://github.com/mikefarah/yq).
