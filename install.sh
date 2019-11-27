@@ -13,6 +13,7 @@ gcloud components install -q beta cloud_sql_proxy kubectl
 
 curl --silent --show-error --fail --location --output get_helm.sh https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get
 chmod 700 get_helm.sh
+
 ./get_helm.sh --version "${HELM_VERSION}"
 
 curl --silent --show-error --fail --location --output /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/"${SOPS_VERSION}"/sops-"${SOPS_VERSION}".linux

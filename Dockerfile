@@ -7,15 +7,15 @@ ENV YQ_BIN_VERSION 2.4.1
 COPY entrypoint.sh entrypoint.sh
 COPY commands.sh /data/commands.sh
 COPY install.sh /tmp/install.sh
+COPY helm-init.sh /tmp/helm-init.sh
 
-RUN chmod +x /tmp/install.sh && \
+RUN chmod +x /tmp/install.sh /tmp/helm-init.sh && \
     /tmp/install.sh
 
 VOLUME /data
 
 USER gkh
 
-RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com && \
-    helm plugin install https://github.com/monotek/helm-secrets.git
+RUN /tmp/helm-init.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
