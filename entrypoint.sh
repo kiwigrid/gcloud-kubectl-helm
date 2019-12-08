@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if [ -n "${GPG_PUB_KEYS}" ]; then
   for KEY in ${GPG_PUB_KEYS}; do
     echo "Fetch ${KEY} from hkp://p80.pool.sks-keyservers.net:80"
