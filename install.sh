@@ -8,8 +8,7 @@ adduser -S gkh gkh
 
 # install apk packages
 apk update
-apk add ca-certificates gnupg mysql-client openssl
-rm -rf /var/cache/apk/*
+apk --no-cache add ca-certificates gnupg mysql-client openssl
 
 # install cloud_sql_proxy & kubectl
 gcloud components install -q beta cloud_sql_proxy kubectl
