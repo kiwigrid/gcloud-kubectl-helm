@@ -6,7 +6,7 @@ The image also contains:
 * [gnupg](https://pkgs.alpinelinux.org/package/edge/main/x86_64/gnupg)
 * [kubeval](https://github.com/instrumenta/kubeval)
 * [mysql-client](https://pkgs.alpinelinux.org/package/edge/main/x86_64/mysql-client)
-* [yq](https://github.com/mikefarah/yq).
+* [yq](https://github.com/mikefarah/yq)
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/kiwigrid/gcloud-kubectl-helm.svg?style=plastic)](https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm/)
 [![CircleCI](https://img.shields.io/circleci/project/github/kiwigrid/gcloud-kubectl-helm/master.svg?style=plastic)](https://circleci.com/gh/kiwigrid/gcloud-kubectl-helm)
