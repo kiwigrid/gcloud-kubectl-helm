@@ -19,6 +19,11 @@ chmod 700 get_helm.sh
 ./get_helm.sh --version "${HELM_VERSION}"
 rm get_helm.sh
 
+# install kubeval
+curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz https://github.com/instrumenta/kubeval/releases/download/"${KUBEVAL_VERSION}"/kubeval-linux-amd64.tar.gz
+tar -C /user/local/bin -xf /tmp/kubeval.tar.gz kubeval
+rm /tmp/kubeval.tar.gz
+
 # install sops
 curl --silent --show-error --fail --location --output /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/"${SOPS_VERSION}"/sops-"${SOPS_VERSION}".linux
 chmod 755 /usr/local/bin/sops
