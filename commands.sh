@@ -41,6 +41,12 @@ echo " -------------- "
 sops -v
 echo ""
 
+echo " ------------------- "
+echo "| TERRAFORM VERSION |"
+echo " ------------------- "
+terraform version
+echo ""
+
 echo " ------------ "
 echo "| YQ VERSION |"
 echo " ------------ "

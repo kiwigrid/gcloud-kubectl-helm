@@ -28,6 +28,11 @@ rm /tmp/kubeval.tar.gz
 curl --silent --show-error --fail --location --output /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/"${SOPS_VERSION}"/sops-"${SOPS_VERSION}".linux
 chmod 755 /usr/local/bin/sops
 
+# install terraform
+curl --silent --show-error --fail --location --output /tmp/terraform.zip https://releases.hashicorp.com/terraform/"${TERRAFORM_VERSION}"/terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip
+unzip terraform_0.14.4_linux_amd64.zip -d /usr/local/bin
+rm /tmp/terraform.zip
+
 # install yq
 curl --silent --show-error --fail --location --output /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/"${YQ_BIN_VERSION}"/yq_linux_amd64
 chmod 755 /usr/local/bin/yq

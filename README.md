@@ -6,6 +6,7 @@ The image also contains:
 * [gnupg](https://pkgs.alpinelinux.org/package/edge/main/x86_64/gnupg)
 * [kubeval](https://github.com/instrumenta/kubeval)
 * [mysql-client](https://pkgs.alpinelinux.org/package/edge/main/x86_64/mysql-client)
+* [terraform](https://www.terraform.io/)
 * [yq](https://github.com/mikefarah/yq)
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/kiwigrid/gcloud-kubectl-helm.svg?style=plastic)](https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm/)
