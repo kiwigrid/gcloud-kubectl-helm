@@ -1,10 +1,10 @@
-FROM google/cloud-sdk:358.0.0-alpine
+FROM google/cloud-sdk:360.0.0-alpine
 
-ENV HELM_VERSION v3.7.0
+ENV HELM_VERSION v3.7.1
 ENV HELM2_VERSION v2.17.0
 ENV KUBEVAL_VERSION v0.16.1
 ENV SOPS_VERSION v3.7.1
-ENV YQ_BIN_VERSION v4.13.2
+ENV YQ_BIN_VERSION v4.13.4
 
 COPY entrypoint.sh entrypoint.sh
 COPY commands.sh /data/commands.sh
