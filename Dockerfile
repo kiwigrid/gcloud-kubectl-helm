@@ -4,7 +4,7 @@ ENV HELM_VERSION v3.8.2
 ENV HELM2_VERSION v2.17.0
 ENV KUBEVAL_VERSION v0.16.1
 ENV SOPS_VERSION v3.7.3
-ENV YQ_BIN_VERSION v4.27.5
+ENV YQ_BIN_VERSION v4.30.8
 
 COPY entrypoint.sh entrypoint.sh
 COPY commands.sh /data/commands.sh
