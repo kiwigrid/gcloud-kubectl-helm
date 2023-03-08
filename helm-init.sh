@@ -3,10 +3,11 @@
 set -e
 set -x
 
-if helm version --client | grep -q 'SemVer:"v2';then 
+if helm version --client | grep -q 'SemVer:"v2';then
     helm init --client-only
-else 
-    helm repo add stable https://kubernetes-charts.storage.googleapis.com
+else
+    helm repo add stable https://charts.helm.sh/stable
 fi
 
-helm plugin install https://github.com/futuresimple/helm-secrets.git
+helm plugin install https://github.com/jkroepke/helm-secrets
+
