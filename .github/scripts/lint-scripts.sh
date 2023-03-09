@@ -5,7 +5,7 @@
 
 set -o errexit
 
-CONFIG_DIR="./.circleci"
+CONFIG_DIR="./.github/scripts"
 TMP_FILE="$(mktemp)"
 
 find "${CONFIG_DIR}" -type f -name "*.sh" > "${TMP_FILE}"
