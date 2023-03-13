@@ -9,6 +9,8 @@ set -o pipefail
 HELM_VERSIONS="$(grep 'ENV HELM2_VERSION' Dockerfile | sed -e 's/ENV HELM2_VERSION v//') $(grep 'ENV HELM_VERSION' Dockerfile | sed -e 's/ENV HELM_VERSION v//')"
 GCLOUD_SDK_VERSION="$(grep google/cloud-sdk Dockerfile | sed -e 's#FROM\ google/cloud-sdk:##'  -e 's#-alpine##')"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
+IS_MASTER="false"
+if [ "${GITHUB_REF}" == 'refs/heads/master' ]; then  IS_MASTER=true; fi
 
 for HELM in ${HELM_VERSIONS}; do
   DOCKER_TAG="${HELM}-${GCLOUD_SDK_VERSION}-${GITHUB_RUN_NUMBER}"
@@ -29,12 +31,13 @@ for HELM in ${HELM_VERSIONS}; do
   fi
   echo "DEBUG done all build Docker image with tag ${DOCKER_TAG} for DockerHubs ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
 
-  #if [ "${CIRCLE_CI}" == 'true' ] && [ -z "${CIRCLE_PULL_REQUEST}" ]; then
-  if [ "${GITHUB_ACTIONS}" == 'true' ]; then
+  echo "DEBUG: GITHUB_ACTIONS: ${GITHUB_ACTIONS} - IS_MASTER: ${IS_MASTER}"
+  if [ "${GITHUB_ACTIONS}" == 'true' ] && [ i${IS_MASTER} == 'true' ]; then
     echo "DEBUG start pushing ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
     # push image to dockerhub
     echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
     #  https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm
+    #  https://docker.io/r/kiwigrid/gcloud-kubectl-helm
     docker push "${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:${DOCKER_TAG}"
     echo "DEBUG done pushing image ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:${DOCKER_TAG}"
 
