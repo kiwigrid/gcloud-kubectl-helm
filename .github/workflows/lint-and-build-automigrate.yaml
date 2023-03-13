@@ -1,0 +1,31 @@
+name: giddel/gcloud-kubectl-helm/lint-and-build
+on:
+  push:
+    branches:
+    - master
+  # pull_request
+  # workflow_dispatch
+env:
+  DOCKER_REGISTRY: docker.io
+  DOCKER_REPOSITORY: gcloud-kubectl-helm
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  # should be set automatic by Github actions?
+  GITHUB_REPOSITORY_OWNER: giddel
+jobs:
+  lint-scripts:
+    runs-on: ubuntu-latest
+    container:
+      image: koalaman/shellcheck-alpine
+    steps:
+    - uses: actions/checkout@v3.3.0
+    - name: lint-scripts
+      run: ".github/scripts/lint-scripts.sh"
+  build-image:
+    runs-on: ubuntu-latest
+    needs:
+    - lint-scripts
+    steps:
+    - uses: actions/checkout@v3.3.0
+    - name: build
+      run: ".github/scripts/build-image.sh"
