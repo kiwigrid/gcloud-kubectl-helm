@@ -1,17 +1,18 @@
-name: giddel/gcloud-kubectl-helm/lint-and-build
+name: lint-and-build
 on:
-  - push
-    #branches:
-    #- master
-  # - pull_request
-  # - workflow_dispatch
+  - push:
+    branches:
+      - master
+  - pull_request
+  - workflow_dispatch
 env:
   DOCKER_REGISTRY: docker.io
   DOCKER_REPOSITORY: gcloud-kubectl-helm
+  # set this in Github repository -> setting -> Secrets and Variables
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  # should be set automatic by Github actions?
-  #GITHUB_REPOSITORY_OWNER: giddel
+  # should be set automatic by Github actions
+  #GITHUB_REPOSITORY_OWNER:
 jobs:
   lint-scripts:
     runs-on: ubuntu-latest
