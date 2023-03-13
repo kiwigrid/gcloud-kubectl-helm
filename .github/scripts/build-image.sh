@@ -32,7 +32,7 @@ for HELM in ${HELM_VERSIONS}; do
   echo "DEBUG done all build Docker image with tag ${DOCKER_TAG} for DockerHubs ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
 
   echo "DEBUG: GITHUB_ACTIONS: ${GITHUB_ACTIONS} - IS_MASTER: ${IS_MASTER}"
-  if [ "${GITHUB_ACTIONS}" == 'true' ] && [ i${IS_MASTER} == 'true' ]; then
+  if [ "${GITHUB_ACTIONS}" == 'true' ] && [ ${IS_MASTER} == 'true' ]; then
     echo "DEBUG start pushing ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
     # push image to dockerhub
     echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
