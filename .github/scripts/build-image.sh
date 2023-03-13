@@ -12,6 +12,13 @@ REPO_ROOT="$(git rev-parse --show-toplevel)"
 IS_MASTER="false"
 if [ "${GITHUB_REF}" == 'refs/heads/master' ]; then  IS_MASTER=true; fi
 
+# just debug
+echo "set: "
+set
+
+echo "env : "
+env
+
 for HELM in ${HELM_VERSIONS}; do
   DOCKER_TAG="${HELM}-${GCLOUD_SDK_VERSION}-${GITHUB_RUN_NUMBER}"
 

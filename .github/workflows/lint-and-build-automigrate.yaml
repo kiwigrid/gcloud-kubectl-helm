@@ -11,7 +11,7 @@ env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   # should be set automatic by Github actions?
-  GITHUB_REPOSITORY_OWNER: giddel
+  #GITHUB_REPOSITORY_OWNER: giddel
 jobs:
   lint-scripts:
     runs-on: ubuntu-latest
