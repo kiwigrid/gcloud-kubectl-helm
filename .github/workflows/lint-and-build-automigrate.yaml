@@ -1,4 +1,5 @@
 name: lint-and-build
+on: push
 env:
   DOCKER_REGISTRY: docker.io
   DOCKER_REPOSITORY: gcloud-kubectl-helm
