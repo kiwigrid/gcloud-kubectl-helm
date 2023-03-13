@@ -19,20 +19,29 @@ for HELM in ${HELM_VERSIONS}; do
   echo "Build Docker image with tag ${DOCKER_TAG} for DockerHubs ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
 
   if ! echo "${HELM}" | grep -q '^2.*'; then
+    echo "DEBUG start build tag: 'latest'"
     docker build --pull --no-cache -t "${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:latest" -t "${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:${DOCKER_TAG}" .
+    echo "DEBUG done build tag: 'latest'"
   else
+    echo "DEBUG start build tag: '${DOCKER_TAG}'"
     docker build --pull --no-cache -t "${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:${DOCKER_TAG}" .
+    echo "DEBUG done build tag: '${DOCKER_TAG}'"
   fi
+  echo "DEBUG done all build Docker image with tag ${DOCKER_TAG} for DockerHubs ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
 
   #if [ "${CIRCLE_CI}" == 'true' ] && [ -z "${CIRCLE_PULL_REQUEST}" ]; then
   if [ "${GITHUB_ACTIONS}" == 'true' ]; then
+    echo "DEBUG start pushing ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY} repo"
     # push image to dockerhub
     echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
     #  https://hub.docker.com/r/kiwigrid/gcloud-kubectl-helm
     docker push "${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:${DOCKER_TAG}"
+    echo "DEBUG done pushing image ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:${DOCKER_TAG}"
 
     if ! echo "${HELM}" | grep -q '^2.*'; then
+      echo "DEBUG start pushing ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:latest"
       docker push "${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:latest"
+      echo "DEBUG done pushing ${DOCKER_REGISTRY}/${GITHUB_REPOSITORY_OWNER}/${DOCKER_REPOSITORY}:latest"
     fi
   else
     echo "skipped push as pull requests are not build..."
